@@ -1,0 +1,12 @@
+{
+  "name": "laila-milan-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Styling portfolio for Laila Milan. Static HTML/CSS/JS.",
+  "scripts": {
+    "optimize": "node scripts/optimize-images.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  }
+}

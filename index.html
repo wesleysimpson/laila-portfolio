@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===================== SEO / SOCIAL (static) ======================= -->
+  <title>Laila Milan — Stylist</title>
+  <meta name="description" content="Laila Milan is a fashion stylist working across editorial, music, and on-set. Selected work and on-set fittings." />
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130f" media="(prefers-color-scheme: dark)" />
+  <link rel="canonical" href="https://lailamilan.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Laila Milan — Stylist" />
+  <meta property="og:description" content="Fashion stylist — editorial, music, and on-set. Selected work." />
+  <meta property="og:url" content="https://lailamilan.com/" />
+  <meta property="og:image" content="https://lailamilan.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laila Milan — Stylist" />
+  <meta name="twitter:description" content="Fashion stylist — editorial, music, and on-set. Selected work." />
+  <meta name="twitter:image" content="https://lailamilan.com/og-image.jpg" />
+
+  <!-- Perf: preload fonts + the on-set lead (LCP) -->
+  <link rel="preload" href="fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="images/optimized/onset-01-640.webp 640w, images/optimized/onset-01-1280.webp 1280w, images/optimized/onset-01-1536.webp 1536w"
+        imagesizes="100vw" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ========================================================================
+     ✎  EDIT YOUR CONTENT HERE — this block is the whole site's content.
+     ========================================================================
+     • Plain text is a sensible default you can keep or rewrite.
+     • Text wrapped like  [✎ … ]  is a PLACEHOLDER to replace before launch.
+     • To add/remove photos: drop files in images/raw/, run `npm run optimize`,
+       then add/remove a line in the matching section's `images: [ … ]` list.
+       Layout is automatic — you never touch styles.css or main.js.
+     • Every image needs `alt` (a short description, for accessibility + SEO).
+     ===================================================================== -->
+<script>
+window.SITE = {
+  copy: {
+    name: "Laila Milan",
+    role: "Stylist",
+
+    // The one line under the header. Keep it short.
+    statement: "A stylist who lets the clothes do the talking — editorial, music, and on set.",
+    heroSub: "Miami. Available for styling-assistant work.",
+
+    onsetNote: "Fittings, wardrobe, and the work behind the picture.",
+
+    bio: "Laila Milan is a Miami-based stylist working across editorial, music, and sportswear. Recent work includes Acne Studios, Odeal, and Love Island, and she styled Isabella Strahan for People. She moves fluently between technical sportswear and evening, and is currently taking on assisting work.",
+
+    // About Me — one paragraph per line.
+    aboutParagraphs: [
+      "The most compelling style isn't the loudest; it's the most authentic. I help athletes, artists, models, and creatives curate looks that perfectly encapsulate who they are through fashion. My expertise is translating one's personality and interests into self-expression that makes one feel confident, unique, and the most elevated version of themselves.",
+      "Living in Miami and being deeply influenced by my Jamaican heritage provides a very culturally diverse framework where I am inspired by not only the rhythm of the Caribbean but also an amazing cultural melting pot. The eccentricity of South Florida elevates my creativity, and I am able to draw inspiration from cultures all over the world.",
+      "To me, fashion is multi-faceted. It's not just what you wear, but how you communicate with the world. It's how you see yourself, how you see others, what you represent, how you feel on any given day. It's self-expression of the highest form. It transcends time and represents the collective voice of each generation.",
+      "Before a first conversation is sparked, before a headline is written, and before the cameras click, your personal style has already introduced you. When you look good… you feel good, and when you feel good… you look good. My goal is to help each client look good, feel good, and tell their story through their unique style before words can be spoken."
+    ],
+
+    // Capabilities list — edit freely.
+    capabilities: [
+      "On-set fittings & wardrobe management",
+      "Editorial & campaign styling",
+      "Celebrity & talent dressing",
+      "Music video & performance styling",
+      "Sourcing, pulls, market & returns",
+      "Steaming, tailoring prep & set organization"
+    ],
+
+    creditsTitle: "Selected credits",
+    credits: "Acne Studios — styling\nPeople Magazine — Isabella Strahan interview\nLove Island USA — Season 7 Reunion (ph. JD Dodard)\nOdeal — “Miami” ft. Leon Thomas — official music video\nMiami Swim Week 2025",
+
+    contactTitle: "Let's work.",
+    email: "iamlailamilan@gmail.com",
+    instagram: "@iamlailamilan",
+    instagramUrl: "https://instagram.com/iamlailamilan"
+  },
+
+  // -------- Images that appear on the page (the single source of truth) -----
+  sections: [
+    {
+      id: "on-set",
+      kind: "onset",               // special large layout — keep as-is
+      title: "On Set",
+      credit: "",                  // your own photos
+      role: "Stylist PA",
+      images: [
+        { src: "onset-01", alt: "Laila Milan adjusting a model's waistband during an on-set fitting", caption: "", credit: "Test shoot — fitting" },
+        { src: "onset-02", alt: "Laila Milan fastening a model's oversized denim look on set", caption: "", credit: "Test shoot — fitting" },
+        { src: "onset-03", alt: "Laila Milan fitting a model in denim and heeled leather boots", caption: "", credit: "Test shoot — fitting" },
+        { src: "onset-04", alt: "Two styled models photographed from behind in a studio", caption: "", credit: "Test shoot" },
+        { src: "onset-05", alt: "Laila Milan photographing a model in a black gown on set", caption: "", credit: "Test shoot" },
+        { src: "onset-06", alt: "On-set fitting during the Odeal “Miami” music video shoot", caption: "", credit: "Odeal — “Miami” ft. Leon Thomas · fitting" },
+        { src: "onset-07", alt: "Styled outfit prepared for the Odeal “Miami” music video shoot", caption: "", credit: "Odeal — “Miami” ft. Leon Thomas · fitting" },
+        { src: "onset-08", alt: "Laila Milan styling Isabella Strahan under studio lighting on a commercial set", caption: "", credit: "Isabella Strahan · People Magazine" },
+        { src: "onset-09", alt: "Behind the scenes at a test shoot", caption: "", credit: "Test shoot" },
+        { src: "onset-10", alt: "Wardrobe rail of looks pulled for a shoot", caption: "" }
+      ]
+    },
+    {
+      id: "published",
+      title: "Published",
+      url: "https://people.com/isabella-strahan-talks-hair-growth-journey-after-cancer-exclusive-11840088",
+      credit: "People — Isabella Strahan · Photography: Dean Chambers",
+      role: "Stylist PA",
+      images: [
+        { src: "published-01", alt: "Published feature in People — Isabella Strahan, styled by Laila Milan; a tearsheet of the People article page with the People masthead visible", caption: "People — Isabella Strahan. Styling: Laila Milan. Photography: Dean Chambers." }
+      ]
+    },
+    {
+      id: "offscript",
+      title: "Off Script",
+      url: "https://youtu.be/nWfUHTx1l8I",
+      credit: "Terri Jackson — Executive Director, WNBPA\nJaren Jackson Jr. — Utah Jazz, center and forward",
+      role: "Stylist PA",
+      images: [
+        { src: "offscript-01", alt: "Terri Jackson, Executive Director of the WNBPA, seated in a cream blazer and taupe wide-leg trousers on the Off Script set", caption: "Terri Jackson, Executive Director of the WNBPA." },
+        { src: "offscript-02", alt: "Terri Jackson and Jaren Jackson Jr. of the Utah Jazz, styled together on the Off Script set", caption: "Terri Jackson (WNBPA) with Jaren Jackson Jr., Utah Jazz." },
+        { src: "offscript-03", alt: "Black-and-white behind-the-scenes frame from the Off Script set — Jaren Jackson Jr. of the Utah Jazz, mid-interview", caption: "Behind the scenes with Jaren Jackson Jr., Utah Jazz." }
+      ]
+    },
+    {
+      id: "lamonda",
+      title: "De La Rose, Ryan Castro — “LA MONDA”",
+      url: "https://youtu.be/9J6xFXo46Rw",
+      credit: "Styling: self-styled\nDancer: Laila Milan\nDir. Pipes 99\nProduction: Great Society",
+      images: [
+        { src: "lamonda-01", alt: "Laila Milan, self-styled in a rose-gold mesh-knit maxi dress, on the LA MONDA music video set at night", caption: "" },
+        { src: "lamonda-02", alt: "Behind the scenes on the LA MONDA music video shoot — an operator films two styled dancers", caption: "" },
+        { src: "lamonda-03", alt: "Wide view of the colourful LA MONDA music video set with styled cast and dancers", caption: "" }
+      ]
+    },
+    {
+      id: "sportswear",
+      title: "Sportswear",
+      credit: "Test — ph. OneShotMia",
+      images: [
+        { src: "sportswear-01", alt: "Sportswear editorial — striped knit set and red adidas Superstars with hand weights", caption: "" },
+        { src: "sportswear-02", alt: "Sportswear editorial styling", caption: "" },
+        { src: "sportswear-03", alt: "Sportswear editorial styling", caption: "" },
+        { src: "sportswear-04", alt: "Pink athleisure look", caption: "" },
+        { src: "sportswear-05", alt: "Pink athleisure look", caption: "" }
+      ]
+    },
+    {
+      id: "concretekicks",
+      title: "Concrete Kicks",
+      label: "Converse — spec",
+      credit: "ph. Tomi Morakinyo (@t0emi)\nCD: Wes Martin, Eric Ford",
+      images: [
+        { src: "concretekicks-01", alt: "Street-style look with red Converse Chuck Taylors, perched on a pole in New York", caption: "" },
+        { src: "concretekicks-02", alt: "Low-angle New York street portrait with red Converse Chuck Taylors and sun flare", caption: "" },
+        { src: "concretekicks-03", alt: "Two models on an orange traffic barrier in red and white Converse Chuck Taylors", caption: "" },
+        { src: "concretekicks-04", alt: "Editorial street duo in tailoring and denim with white and red Converse Chuck Taylors", caption: "" },
+        { src: "concretekicks-05", alt: "Close-up of orange Converse Chuck Taylors and raw denim against a New York mural", caption: "" },
+        { src: "concretekicks-06", alt: "Two models on a bodega corner in green and pink Converse Chuck Taylors", caption: "" },
+        { src: "concretekicks-07", alt: "Street look with pink Converse Chuck Taylors outside a New York pizza shop", caption: "" },
+        { src: "concretekicks-08", alt: "Model in green Converse Chuck Taylors at a crosswalk with a slice of New York pizza", caption: "" }
+      ]
+    },
+    {
+      id: "studio",
+      title: "Studio",
+      credit: "Test — ph. Ella Furness",
+      images: [
+        { src: "studio-01", alt: "Editorial studio look — sheer distressed-denim dress with slouched leather boots", caption: "" },
+        { src: "studio-02", alt: "Editorial studio pose — sheer denim dress against raking light", caption: "" },
+        { src: "studio-03", alt: "Editorial studio look — black shirt, satin skirt and shoulder bag", caption: "" },
+        { src: "studio-04", alt: "Editorial studio look — draped black gown", caption: "" },
+        { src: "studio-05", alt: "Editorial studio look — evening gown, seated pose", caption: "" },
+        { src: "studio-06", alt: "Editorial studio look — one-shoulder black gown", caption: "" },
+        { src: "studio-07", alt: "Editorial studio portrait — minimal black styling", caption: "" },
+        { src: "studio-08", alt: "Editorial studio look — tailored black separates", caption: "" },
+        { src: "studio-09", alt: "Editorial studio look — denim and leather styling", caption: "" },
+        { src: "studio-10", alt: "Editorial studio look — knit tank with oversized denim and leather boots", caption: "" }
+      ]
+    },
+    {
+      id: "acne",
+      title: "Acne Studios",
+      credit: "Styled by Laila Milan · Acne Studios",
+      images: [
+        { src: "acne-01", alt: "Street editorial — pink Acne Studios tee, wide-leg denim and logo bag against a green tiled wall", caption: "" },
+        { src: "acne-02", alt: "Street editorial styled with Acne Studios pieces", caption: "" },
+        { src: "acne-03", alt: "Street editorial styled with Acne Studios pieces", caption: "" },
+        { src: "acne-04", alt: "Street editorial styled with Acne Studios pieces", caption: "" }
+      ]
+    },
+    {
+      id: "love-island",
+      title: "Love Island USA — Season 7 Reunion",
+      credit: "Photography: JD Dodard",
+      images: [
+        { src: "loveisland-01", alt: "Full cast styled for the Love Island USA reunion, photographed on the reunion set", caption: "" },
+        { src: "loveisland-02", alt: "Menswear look — oversized grey blazer and denim, styled for a Love Island cast member", caption: "" },
+        { src: "loveisland-03", alt: "Tailored look styled for a Love Island cast member", caption: "" },
+        { src: "loveisland-04", alt: "Full look styled for a Love Island cast member", caption: "" },
+        { src: "loveisland-05", alt: "Red-carpet look styled for a Love Island cast member", caption: "" },
+        { src: "loveisland-06", alt: "Evening look styled for a Love Island cast member", caption: "" },
+        { src: "loveisland-07", alt: "Reunion look styled for a Love Island cast member", caption: "" }
+      ]
+    },
+    {
+      id: "odea",
+      title: "Odeal — “Miami” (ft. Leon Thomas)",
+      url: "https://youtu.be/V_KchwQrS7Y",
+      credit: "Odeal",
+      images: [
+        { src: "odea-01", alt: "Film still from Odeal's “Miami” music video — waterfront Miami scene", caption: "" },
+        { src: "odea-02", alt: "Styling still from the Odeal “Miami” music video shoot", caption: "" },
+        { src: "odea-03", alt: "Styling still from the Odeal “Miami” music video shoot", caption: "" },
+        { src: "odea-04", alt: "Styling still from the Odeal “Miami” music video shoot", caption: "" },
+        { src: "odea-05", alt: "Styling still from the Odeal “Miami” music video shoot", caption: "" }
+      ]
+    }
+    /* --- Swim Week and Press sections were removed: the only available files
+       were watermarked Getty press photos / People.com screenshots (archived in
+       images/archive/). To restore, add your own or licensed images to
+       images/raw/, run `npm run optimize`, and re-add a section here. --- */
+  ]
+};
+</script>
+<!-- ===================== END EDITABLE CONTENT ========================== -->
+
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <div class="masthead__inner">
+      <div class="wordmark">
+        <span class="wordmark__name" data-copy="name">Laila Milan</span>
+        <span class="wordmark__role" data-copy="role">Stylist</span>
+      </div>
+      <nav class="nav" aria-label="Sections">
+        <a href="#on-set">On Set</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <p class="nojs">This portfolio needs JavaScript to display the imagery.</p>
+
+  <main id="main">
+
+    <!-- Statement, then straight into the work -->
+    <section class="hero wrap" aria-label="Introduction">
+      <h1 class="hero__statement" data-copy="statement">A stylist who lets the clothes do the talking — editorial, music, and on set.</h1>
+      <p class="hero__sub" data-copy="heroSub"></p>
+    </section>
+
+    <!-- ON SET — first, and the largest imagery on the page -->
+    <section class="section section--tight wrap" aria-labelledby="on-set-title" id="on-set">
+      <div class="section__head">
+        <p class="kicker">The work behind the picture</p>
+        <h2 class="section__title" id="on-set-title">On Set</h2>
+        <p class="section__note" data-copy="onsetNote"></p>
+      </div>
+      <div id="onset-media"></div>
+    </section>
+
+    <!-- WORK — grouped by shoot (rendered from the config) -->
+    <section class="section wrap" aria-labelledby="work-title" id="work">
+      <div class="section__head">
+        <p class="kicker">Selected work</p>
+        <h2 class="section__title" id="work-title">Work</h2>
+      </div>
+      <!-- shoot sections injected here -->
+    </section>
+
+    <!-- ABOUT — statement, then capabilities + credits -->
+    <section class="section wrap" aria-labelledby="about-title" id="about">
+      <p class="kicker" id="about-title">About</p>
+      <div class="about-layout">
+        <p class="bio" data-copy="bio"></p>
+        <div class="about-prose" data-copy="about"></div>
+      </div>
+      <div class="about-meta">
+        <div>
+          <p class="kicker">Capabilities</p>
+          <ul class="caps" data-copy="capabilities"></ul>
+        </div>
+        <div>
+          <p class="kicker" data-copy="creditsTitle">Selected credits</p>
+          <p class="credits-copy" data-copy="credits"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact wrap" aria-labelledby="contact-title" id="contact">
+      <h2 class="contact__title" data-copy="contactTitle" id="contact-title">Let's work.</h2>
+      <div class="contact__links">
+        <a data-copy="email" href="#">email</a>
+        <a data-copy="instagram" href="#" rel="me">instagram</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>&copy; <span data-copy="year">2026</span> <span data-copy="footName">Laila Milan</span></span>
+    <span data-copy="role">Stylist</span>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" data-open="false">
+    <button class="lb-close" type="button" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous image">&#8592;</button>
+    <div class="lightbox__stage">
+      <img class="lightbox__img" src="" alt="" />
+      <p class="lightbox__cap"></p>
+    </div>
+    <button class="lb-btn lb-next" type="button" aria-label="Next image">&#8594;</button>
+  </div>
+
+  <script src="images/manifest.js"></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

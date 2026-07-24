@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+*.log
+_site/
+
+# Original camera-named uploads left in the project root.
+# Clean, renamed copies already live in images/raw/ — these root duplicates are
+# kept on disk as a personal backup but are not committed or deployed.
+# Safe to delete whenever you like.
+/*.jpeg
+/*.JPG
+images/archive/
