@@ -36,6 +36,52 @@ const JPEG_QUALITY = 82;
 
 const IMAGE_RE = /\.(jpe?g|png|webp|tiff?)$/i;
 
+// Source images that intentionally live in the repo ROOT (not in images/raw/).
+// Each is optimized into images/optimized/ exactly like everything else, keyed
+// by the slug the page references. Add { file, slug } pairs here.
+const EXTRA_SOURCES = [
+  { file: 'studio1.JPG', slug: 'studio-11' },
+  { file: 'studio2.JPG', slug: 'studio-12' },
+  { file: 'studio3.JPG', slug: 'studio-13' },
+  { file: 'test_bts.JPG', slug: 'onset-11' },
+];
+
+// Optimize a single source image into images/optimized/ and return its
+// manifest entry. Used for both images/raw/ files and the EXTRA_SOURCES above.
+async function processImage(srcPath, slug) {
+  // .rotate() bakes in EXIF orientation before metadata is stripped, so
+  // portrait shots never come out sideways.
+  const meta = await sharp(srcPath).rotate().metadata();
+  const srcWidth = meta.width;
+  const srcHeight = meta.height;
+
+  // Pick output widths: every target smaller than the source, capped by the
+  // source width (so the largest tier is the source, never upscaled).
+  const widths = TARGET_WIDTHS.filter((w) => w < srcWidth);
+  widths.push(Math.min(srcWidth, Math.max(...TARGET_WIDTHS)));
+  const uniqueWidths = [...new Set(widths)].sort((a, b) => a - b);
+
+  for (const w of uniqueWidths) {
+    const resized = () => sharp(srcPath).rotate().resize({ width: w });
+    await resized().webp({ quality: WEBP_QUALITY }).toFile(path.join(OUT_DIR, `${slug}-${w}.webp`));
+    await resized().jpeg({ quality: JPEG_QUALITY, mozjpeg: true }).toFile(path.join(OUT_DIR, `${slug}-${w}.jpg`));
+  }
+
+  // Tiny blurred placeholder, inlined so it costs no extra request.
+  const lqipBuffer = await sharp(srcPath).rotate().resize({ width: 24 }).blur().webp({ quality: 40 }).toBuffer();
+  const lqip = `data:image/webp;base64,${lqipBuffer.toString('base64')}`;
+
+  console.log(`  ${slug.padEnd(16)} ${srcWidth}x${srcHeight}  →  [${uniqueWidths.join(', ')}]`);
+
+  return {
+    width: srcWidth,
+    height: srcHeight,
+    aspectRatio: Number((srcWidth / srcHeight).toFixed(4)),
+    widths: uniqueWidths,
+    lqip,
+  };
+}
+
 async function main() {
   if (!fs.existsSync(RAW_DIR)) {
     console.error(`No source folder found at ${RAW_DIR}`);
@@ -63,51 +109,17 @@ async function main() {
 
   for (const file of files) {
     const slug = file.replace(IMAGE_RE, '');
-    const srcPath = path.join(RAW_DIR, file);
+    manifest.images[slug] = await processImage(path.join(RAW_DIR, file), slug);
+  }
 
-    // .rotate() bakes in EXIF orientation before we strip metadata, so
-    // portrait shots never come out sideways.
-    const base = sharp(srcPath).rotate();
-    const meta = await base.metadata();
-    const srcWidth = meta.width;
-    const srcHeight = meta.height;
-
-    // Pick output widths: every target smaller than the source, capped by the
-    // source width itself (so the largest tier is the source, never upscaled).
-    const widths = TARGET_WIDTHS.filter((w) => w < srcWidth);
-    widths.push(Math.min(srcWidth, Math.max(...TARGET_WIDTHS)));
-    const uniqueWidths = [...new Set(widths)].sort((a, b) => a - b);
-
-    for (const w of uniqueWidths) {
-      const resized = () => sharp(srcPath).rotate().resize({ width: w });
-      await resized()
-        .webp({ quality: WEBP_QUALITY })
-        .toFile(path.join(OUT_DIR, `${slug}-${w}.webp`));
-      await resized()
-        .jpeg({ quality: JPEG_QUALITY, mozjpeg: true })
-        .toFile(path.join(OUT_DIR, `${slug}-${w}.jpg`));
+  // Also process the root-located extras (kept in the repo root on purpose).
+  for (const { file, slug } of EXTRA_SOURCES) {
+    const srcPath = path.join(ROOT, file);
+    if (!fs.existsSync(srcPath)) {
+      console.warn(`  ⚠ extra source not found, skipped: ${file}`);
+      continue;
     }
-
-    // Tiny blurred placeholder, inlined so it costs no extra request.
-    const lqipBuffer = await sharp(srcPath)
-      .rotate()
-      .resize({ width: 24 })
-      .blur()
-      .webp({ quality: 40 })
-      .toBuffer();
-    const lqip = `data:image/webp;base64,${lqipBuffer.toString('base64')}`;
-
-    manifest.images[slug] = {
-      width: srcWidth,
-      height: srcHeight,
-      aspectRatio: Number((srcWidth / srcHeight).toFixed(4)),
-      widths: uniqueWidths,
-      lqip,
-    };
-
-    console.log(
-      `  ${slug.padEnd(16)} ${srcWidth}x${srcHeight}  →  [${uniqueWidths.join(', ')}]`
-    );
+    manifest.images[slug] = await processImage(srcPath, slug);
   }
 
   fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');

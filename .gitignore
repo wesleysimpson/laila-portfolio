@@ -9,4 +9,13 @@ _site/
 # Safe to delete whenever you like.
 /*.jpeg
 /*.JPG
+
+# …but DO track these root-located source images — the build (EXTRA_SOURCES in
+# scripts/optimize-images.js) optimizes them into images/optimized/, so they must
+# be committed for the GitHub Pages deploy to find them.
+!/studio1.JPG
+!/studio2.JPG
+!/studio3.JPG
+!/test_bts.JPG
+
 images/archive/
