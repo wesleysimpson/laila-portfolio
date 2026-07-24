@@ -135,8 +135,8 @@ images/
   optimized/          Generated: WebP + JPEG at 640/1280/1920 + blur placeholder
   archive/            Set aside, not published (see note above)
   manifest.json/.js   Generated: real pixel sizes (prevents layout shift)
+  og-image.jpg        Hand-cropped 1200×630 link-preview image (not auto-generated)
 fonts/                Self-hosted Fraunces + Inter (Google Fonts, no tracking)
-og-image.jpg          Generated: 1200×630 link-preview image
 CNAME                 Custom domain for GitHub Pages
 .github/workflows/    Auto-deploy on push to main
 ```
@@ -151,5 +151,10 @@ CNAME                 Custom domain for GitHub Pages
 photo: strip EXIF/location metadata, auto-rotate, export WebP **and** JPEG at up to
 three widths (never upscaling), generate a tiny blurred placeholder for the blur-up
 effect, and record exact dimensions so the page reserves space and never “jumps”
-while loading. It also builds the social-share image. Change the share image by
-editing `OG_SOURCE_SLUG` at the top of `scripts/optimize-images.js`.
+while loading.
+
+The social link-preview image, `images/og-image.jpg`, is a **hand-cropped**
+1200×630 file (deliberately not auto-generated, so it can't be rebuilt at the
+wrong dimensions). To change it, crop a new 1200×630 JPEG under 300KB, save it to
+`images/og-image.jpg`, and keep the `<meta property="og:image" …>` URL in
+`index.html` pointing at it.

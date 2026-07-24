@@ -8,7 +8,10 @@
  *   - a tiny blurred LQIP placeholder (inlined into the manifest as a data URI)
  *   - images/manifest.json  with real pixel dimensions so the HTML can set
  *     width/height and avoid layout shift
- *   - og-image.jpg  (1200x630 social-share card) from a chosen hero frame
+ *
+ * The social link-preview image (images/og-image.jpg) is intentionally
+ * hand-cropped to exactly 1200x630 and is NOT generated here, so this script
+ * can never regenerate it at the wrong dimensions.
  *
  * You normally never need to touch this file. To add photos, drop them in
  * images/raw/ and run:  npm run optimize
@@ -22,7 +25,6 @@ const ROOT = path.join(__dirname, '..');
 const RAW_DIR = path.join(ROOT, 'images', 'raw');
 const OUT_DIR = path.join(ROOT, 'images', 'optimized');
 const MANIFEST = path.join(ROOT, 'images', 'manifest.json');
-const OG_OUT = path.join(ROOT, 'og-image.jpg');
 
 // Responsive widths. Larger widths are skipped when the source is smaller,
 // so images are never upscaled.
@@ -31,10 +33,6 @@ const TARGET_WIDTHS = [640, 1280, 1920];
 // Quality settings — tuned for photographic content at portfolio scale.
 const WEBP_QUALITY = 78;
 const JPEG_QUALITY = 82;
-
-// The frame used to build the 1200x630 social-share card. Change the slug
-// (without extension) to use a different photo for link previews.
-const OG_SOURCE_SLUG = 'studio-03';
 
 const IMAGE_RE = /\.(jpe?g|png|webp|tiff?)$/i;
 
@@ -110,19 +108,6 @@ async function main() {
     console.log(
       `  ${slug.padEnd(16)} ${srcWidth}x${srcHeight}  →  [${uniqueWidths.join(', ')}]`
     );
-  }
-
-  // Social-share card: cover-crop a strong frame to 1200x630.
-  const ogSrc = path.join(RAW_DIR, `${OG_SOURCE_SLUG}.jpg`);
-  if (fs.existsSync(ogSrc)) {
-    await sharp(ogSrc)
-      .rotate()
-      .resize({ width: 1200, height: 630, fit: 'cover', position: 'attention' })
-      .jpeg({ quality: 82, mozjpeg: true })
-      .toFile(OG_OUT);
-    console.log(`\n  og-image.jpg     1200x630  (from ${OG_SOURCE_SLUG})`);
-  } else {
-    console.warn(`\n  ⚠ OG source ${OG_SOURCE_SLUG}.jpg not found — skipped og-image.jpg`);
   }
 
   fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
